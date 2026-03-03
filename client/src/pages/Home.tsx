@@ -197,17 +197,20 @@ export default function Home() {
           <div className="space-y-8">
             {[
               {
-                year: "2025",
-                title: "Head of Social Media & HR Strategy",
-                company: "Utsavy (Government of Rajasthan backed | iStart | Favcy)",
-                desc: "- Worked in funded startup ecosystem\n- Built digital positioning & strategy execution"
-              },
+  year: "Jan 2026 – Present",
+  title: "Founder",
+  company: "TrustMitra",
+  desc: "Conceptualized and architected a commission-based gig marketplace focused on building digital trust for India’s informal workforce.\n\nBuilt MVP with OTP-based job verification and seamless UPI payments.\n\nCurrently executing pilot rollout strategy and scaling core product systems."
+},
+
+
               {
-                year: "2026",
-                title: "Founder",
-                company: "TrustMitra",
-                desc: "- Designed commission-based marketplace\n- Built MVP with OTP job start + UPI payments\n- Planning pilot rollout"
-              },
+  year: "March 2025 – Present",
+  title: "Head of Social Media & HR Strategy",
+  company: "Utsavy (Government of Rajasthan backed | iStart | Favcy Venture Builders)",
+  desc: "Operated within a government-backed funded startup ecosystem, contributing to strategic growth initiatives.\n\nLed digital positioning, brand narrative development, and cross-functional execution across marketing and HR systems."
+},
+              
 
               {
                 year: "2024 – 2027",
@@ -248,16 +251,25 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-6">Technical Stack</h3>
-              <div className="flex flex-wrap gap-3">
-                {["React", "Node.js", "MongoDB", "JavaScript", "Python (working knowledge)"].map((skill, idx) => (
-                  <span
-                    key={idx}
-                    className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300 font-medium text-sm hover:border-purple-500 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+<div className="flex flex-wrap gap-3">
+  {[
+    "Java",
+    "C & C++ (DSA Practice)",
+    "Python",
+    "MySQL",
+    "HTML & CSS",
+    "JavaScript",
+    "React (Learning & Building)",
+    "Node.js (Exploring Backend)"
+  ].map((skill, idx) => (
+    <span
+      key={idx}
+      className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300 font-medium text-sm hover:border-purple-500 transition-colors"
+    >
+      {skill}
+    </span>
+  ))}
+</div>
             </div>
           </div>
         </div>
