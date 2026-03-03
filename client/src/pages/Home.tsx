@@ -210,11 +210,11 @@ export default function Home() {
               },
 
               {
-                year: "2023-2026",
-                title: "BCA in Computer Applications",
-                company: "University Education",
-                desc: "Completed degree with focus on web development, databases, and modern software practices"
-              }
+                year: "2024 – 2027",
+                title: "BCA in Artificial Intelligence & Data Science",
+                company: "Poornima University, Jaipur",
+                desc: "Building strong foundations in AI systems, data-driven decision making, and scalable software architecture while applying concepts to real-world product execution."
+        }
             ].map((item, idx) => (
               <div key={idx} className="relative pl-8 pb-8 border-l-2 border-cyan-500/30 last:pb-0 animate-fade-in" style={{ animationDelay: `${idx * 100}ms` }}>
                 <div className="absolute -left-4 top-0 w-6 h-6 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full border-4 border-slate-900" />
