@@ -276,6 +276,58 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Learning & Credentials Section */}
+<section className="py-16 bg-slate-900/40 border-y border-slate-700/50">
+  <div className="container max-w-4xl mx-auto px-4">
+    
+    <h2 className="text-2xl font-semibold mb-4">
+      Learning & Credentials
+    </h2>
+
+    <p className="text-slate-400 mb-4">
+      Continuous learner with 15+ certifications across AI, Programming, and Startup Ecosystems.
+    </p>
+
+    <button
+      onClick={() => setShowCredentials(!showCredentials)}
+      className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
+    >
+      {showCredentials ? "Hide Detailed Credentials ↑" : "View Detailed Credentials ↓"}
+    </button>
+
+    {showCredentials && (
+      <div className="mt-8 grid md:grid-cols-2 gap-8 bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
+        
+        <div>
+          <h3 className="font-semibold text-lg mb-4 text-cyan-400">
+            AI & Data
+          </h3>
+          <ul className="space-y-2 text-slate-300 text-sm">
+            <li>ISRO (IIRS) – Geodata Processing & Machine Learning</li>
+            <li>NPTEL – IIT Kanpur – Cloud, IoT & Edge ML</li>
+            <li>AI Fundamentals – Data Science Basics</li>
+            <li>Machine Learning & Python Training</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-lg mb-4 text-purple-400">
+            Programming & DSA
+          </h3>
+          <ul className="space-y-2 text-slate-300 text-sm">
+            <li>Java Programming – Core & OOP</li>
+            <li>C & C++ – Data Structures & Algorithms</li>
+            <li>Python Development</li>
+            <li>MySQL Essentials</li>
+            <li>Web Development – HTML, CSS, JavaScript</li>
+          </ul>
+        </div>
+
+      </div>
+    )}
+  </div>
+</section>
+
       {/* Projects Section - Enhanced with Images */}
       <section id="projects" className="py-20">
         <div className="container max-w-6xl mx-auto px-4">
