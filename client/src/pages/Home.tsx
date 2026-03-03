@@ -446,38 +446,58 @@ export default function Home() {
       </div>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-b from-slate-900 to-slate-950">
-        <div className="container max-w-2xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Let's Connect</h2>
-          <p className="text-lg text-slate-300 mb-12">
-            Open to meaningful startup collaborations, product roles, and ecosystem partnerships.
-          </p>
+<section id="contact" className="py-20 bg-gradient-to-b from-slate-900 to-slate-950">
+  <div className="container max-w-2xl mx-auto px-4 text-center">
+    <h2 className="text-4xl font-bold mb-6">Let's Connect</h2>
+    <p className="text-lg text-slate-300 mb-12">
+      Open to meaningful startup collaborations, product roles, and ecosystem partnerships.
+    </p>
 
-          <div className="flex justify-center gap-6 mb-12">
-            <a href="https://github.com/devubro143" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
-              <Github size={32} />
-            </a>
-            <a href="https://linkedin.com/in/devendra-gupta-" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
-              <Linkedin size={32} />
-            </a>
-            <a href="https://wa.me/919376813483" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
-              <MessageCircle size={32} />
-            </a>
-          </div>
+    <div className="flex justify-center gap-6 mb-12">
+      <a
+        href="https://github.com/devubro143"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-slate-400 hover:text-cyan-400 transition-colors"
+      >
+        <Github size={32} />
+      </a>
+      <a
+        href="https://linkedin.com/in/devendra-gupta-"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-slate-400 hover:text-cyan-400 transition-colors"
+      >
+        <Linkedin size={32} />
+      </a>
+      <a
+        href={`https://wa.me/919376813483?text=${whatsappMessage}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-slate-400 hover:text-cyan-400 transition-colors"
+      >
+        <MessageCircle size={32} />
+      </a>
+    </div>
 
-          <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8">
-            <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-            <p className="text-slate-300 mb-6">
-              I'm always interested in hearing about new opportunities, whether that's a freelance project, a full-time role, or just a chat about technology.
-            </p>
-            <a href="https://wa.me/919376813483" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0 gap-2">
-                <MessageCircle size={18} /> Chat on WhatsApp
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
+    <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8">
+      <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
+      <p className="text-slate-300 mb-6">
+        If you're building in marketplaces, fintech, or digital infrastructure — let's connect and explore collaboration.
+      </p>
+      <a
+        href={`https://wa.me/919376813483?text=${whatsappMessage}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0 gap-2">
+          <MessageCircle size={18} /> Chat on WhatsApp
+        </Button>
+      </a>
+    </div>
+  </div>
+</section>
+
 
       {/* Footer */}
       <footer className="bg-slate-950 border-t border-slate-800 py-8">
