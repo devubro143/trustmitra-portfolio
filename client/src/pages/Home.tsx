@@ -12,6 +12,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [flippedCerts, setFlippedCerts] = useState<number[]>([]);
   const [activeSection, setActiveSection] = useState("home");
+  const [showCredentials, setShowCredentials] = useState(false);
 
   const toggleCert = (index: number) => {
     setFlippedCerts(prev =>
