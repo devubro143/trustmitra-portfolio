@@ -462,6 +462,7 @@ export default function Home() {
       >
         <Github size={32} />
       </a>
+
       <a
         href="https://linkedin.com/in/devendra-gupta-"
         target="_blank"
@@ -470,8 +471,9 @@ export default function Home() {
       >
         <Linkedin size={32} />
       </a>
+
       <a
-        href={`https://wa.me/919376813483?text=${whatsappMessage}`}
+        href="https://wa.me/919376813483?text=Hi%20Devendra%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20explore%20a%20startup%20collaboration%20or%20product%20opportunity."
         target="_blank"
         rel="noopener noreferrer"
         className="text-slate-400 hover:text-cyan-400 transition-colors"
@@ -485,8 +487,9 @@ export default function Home() {
       <p className="text-slate-300 mb-6">
         If you're building in marketplaces, fintech, or digital infrastructure — let's connect and explore collaboration.
       </p>
+
       <a
-        href={`https://wa.me/919376813483?text=${whatsappMessage}`}
+        href="https://wa.me/919376813483?text=Hi%20Devendra%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20explore%20a%20startup%20collaboration%20or%20product%20opportunity."
         target="_blank"
         rel="noopener noreferrer"
       >
