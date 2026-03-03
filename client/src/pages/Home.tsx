@@ -36,11 +36,21 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
-        <div className="container max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            DG
-          </div>
+<nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
+  <div className="container max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    
+    <button
+      onClick={() => scrollToSection("home")}
+      className="flex items-center gap-2 group"
+    >
+      <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
+        Devendra
+      </span>
+      <span className="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded-full border border-cyan-500/30 hidden sm:inline">
+        Founder
+      </span>
+    </button>
+    
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
