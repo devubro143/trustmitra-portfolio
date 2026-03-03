@@ -94,10 +94,16 @@ export default function Home() {
                   Hi, I'm <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Devendra Gupta</span>
                 </h1>
                 <p className="text-xl text-slate-300 mb-4">
-                  Full Stack Developer | HR & Social Media Manager | Startup Enthusiast
+                  Startup Builder | Founder of TrustMitra | Product & Growth Execution
                 </p>
                 <p className="text-slate-400 leading-relaxed">
-                  Computer Applications undergraduate with hands-on experience in web development, SaaS marketing, and startup execution. Passionate about building tech-driven products that solve real-world problems.
+                  I build and execute tech-driven startup ideas that solve real-world problems.
+                </p>
+                <p className="text-slate-400 leading-relaxed">
+                  My journey includes building a marketplace MVP (TrustMitra) from concept to execution, gaining invaluable experience within the government-backed startup ecosystem, and focusing on developing robust product systems for scalable execution.
+                </p>
+                <p className="text-slate-400 leading-relaxed font-bold">
+                  Currently building a digital trust layer for India’s gig workforce.
                 </p>
               </div>
 
@@ -116,7 +122,7 @@ export default function Home() {
             </div>
 
             {/* Right - Profile Image */}
-            <div className="animate-slide-up hidden md:block">
+            <div className="animate-slide-up flex justify-center mt-8 md:mt-0">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
                 <img
@@ -146,13 +152,13 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-12">About Me</h2>
           <div className="space-y-6 text-slate-300 leading-relaxed">
             <p>
-              I'm a passionate developer crafting digital experiences with innovation and precision. With 1.5+ years of startup and project experience, I've worked on everything from MVP development to digital marketing strategy.
+              My journey began as a BCA (Computer Applications) student, where I quickly became fascinated by the intersection of coding and product systems. This led me to dive deep into the dynamic world of startups.
             </p>
             <p>
-              Currently, I'm the Head of Social Media & Marketing at Utsavy, a Rajasthan Government-registered wedding tech startup, where I manage digital strategy, content creation, and HR operations.
+              I gained invaluable exposure within the government-backed startup ecosystem, including hands-on experience at Utsavy, a Rajasthan Government-registered wedding tech startup. This experience solidified my understanding of digital strategy, content creation, and HR operations within a fast-paced startup environment.
             </p>
             <p>
-              When I'm not coding, you can find me exploring cutting-edge technologies, contributing to open-source communities, and mentoring the next generation of developers.
+              Today, my primary focus is building TrustMitra, a venture aimed at creating a digital trust layer for India's gig workforce. I am dedicated to transforming innovative ideas into tangible products that address real-world challenges.
             </p>
           </div>
 
@@ -182,25 +188,20 @@ export default function Home() {
             {[
               {
                 year: "2025",
-                title: "Head of Social Media & Marketing",
-                company: "Utsavy (Wedding Tech Startup)",
-                desc: "Built digital marketing strategy, created high-converting reels, worked on product positioning & competitor analysis"
+                title: "Head of Social Media & HR Strategy",
+                company: "Utsavy (Government of Rajasthan backed | iStart | Favcy)",
+                desc: "- Worked in funded startup ecosystem\n- Built digital positioning & strategy execution"
               },
               {
                 year: "2026",
                 title: "Founder",
-                company: "TrustMitra (Gig Worker Marketplace MVP)",
-                desc: "Developed MVP platform, built commission-based model, focused on informal worker digital identity system"
+                company: "TrustMitra",
+                desc: "- Designed commission-based marketplace\n- Built MVP with OTP job start + UPI payments\n- Planning pilot rollout"
               },
-              {
-                year: "2024-2025",
-                title: "Team Lead",
-                company: "KaamSetu (Ideathon MVP Project)",
-                desc: "Led team to conceptualize and build gig worker marketplace MVP, defined roadmap, coordinated rapid product development"
-              },
+
               {
                 year: "2023-2026",
-                title: "B.Tech in Computer Applications",
+                title: "BCA in Computer Applications",
                 company: "University Education",
                 desc: "Completed degree with focus on web development, databases, and modern software practices"
               }
@@ -223,9 +224,9 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-12">My Skills</h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-xl font-semibold mb-6">Technical Skills</h3>
+              <h3 className="text-xl font-semibold mb-6">Core Strengths</h3>
               <div className="flex flex-wrap gap-3">
-                {["C", "C++", "Java", "Python", "HTML5", "CSS3", "JavaScript", "React", "Node.js", "MongoDB", "NumPy", "Pandas", "OpenCV", "Git", "DSA", "OOPs", "TypeScript", "Tailwind CSS"].map((skill, idx) => (
+                {["Startup Execution", "Product Strategy", "Marketplace Model Design", "MVP Development", "Growth Systems Thinking"].map((skill, idx) => (
                   <span
                     key={idx}
                     className="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 text-cyan-300 font-medium text-sm hover:border-cyan-500 transition-colors"
@@ -236,9 +237,9 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-6">Professional Skills</h3>
+              <h3 className="text-xl font-semibold mb-6">Technical Stack</h3>
               <div className="flex flex-wrap gap-3">
-                {["Digital Marketing", "Social Media Strategy", "Content Creation", "HR Coordination", "Startup Execution", "Team Leadership", "Product Strategy", "UX Design"].map((skill, idx) => (
+                {["React", "Node.js", "MongoDB", "JavaScript", "Python (working knowledge)"].map((skill, idx) => (
                   <span
                     key={idx}
                     className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300 font-medium text-sm hover:border-purple-500 transition-colors"
@@ -275,9 +276,14 @@ export default function Home() {
                   <div>
                     <p className="text-cyan-400 font-medium text-sm mb-2">Gig Worker Marketplace</p>
                     <h3 className="text-2xl font-bold mb-3">TrustMitra - Worker Marketplace MVP</h3>
-                    <p className="text-slate-300 mb-4 leading-relaxed">
-                      Web-based gig worker marketplace with OTP-based job start, UPI payments, and rating system. Focused on building digital identity for informal workers with seamless payment integration.
-                    </p>
+                      <p className="font-semibold text-slate-300 mb-2">Problem:</p>
+                      <p className="text-slate-400 leading-relaxed mb-4">Millions of informal gig workers lack verified digital work identity and payment trust.</p>
+                      <p className="font-semibold text-slate-300 mb-2">Solution:</p>
+                      <p className="text-slate-400 leading-relaxed mb-4">TrustMitra is a commission-based marketplace with OTP job start, UPI payments, and rating system.</p>
+                      <p className="font-semibold text-slate-300 mb-2">My Role:</p>
+                      <p className="text-slate-400 leading-relaxed mb-4">Founder & Product Architect — Defined business model, built MVP, designed rollout roadmap.</p>
+                      <p className="font-semibold text-slate-300 mb-2">Vision:</p>
+                      <p className="text-slate-400 leading-relaxed mb-4">Building India’s trusted digital infrastructure for gig workers.</p>
                   </div>
                   <div className="space-y-3">
                     <p className="text-sm text-slate-400"><span className="font-semibold text-slate-300">Tech Stack:</span> React, Node.js, MongoDB, UPI Integration</p>
@@ -358,30 +364,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Additional Projects Grid */}
-          <div className="mt-20 pt-12 border-t border-slate-700/50">
-            <h3 className="text-2xl font-bold mb-8">Other Notable Projects</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-slate-700/50 border border-slate-600 rounded-2xl p-6 hover:border-cyan-500/50 transition-all hover:shadow-lg hover:shadow-cyan-500/10 group">
-                <h4 className="font-semibold text-lg mb-3 group-hover:text-cyan-400 transition-colors">Startup Digital Marketing Dashboard</h4>
-                <p className="text-slate-300 mb-4 text-sm">Analytics dashboard for tracking social media metrics, engagement rates, and campaign performance with real-time data visualization.</p>
-                <div className="flex flex-wrap gap-2">
-                  {["React", "Chart.js", "Tailwind CSS"].map((t, i) => (
-                    <span key={i} className="text-xs px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">{t}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* Certifications Section */}
       <section className="py-20 bg-slate-800/30 border-y border-slate-700/50">
         <div className="container max-w-4xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12">Featured Certifications</h2>
-          <p className="text-slate-400 mb-8 text-center">Click cards to flip</p>
+          <h2 className="text-4xl font-bold mb-12">Ecosystem & Learning Exposure</h2>
+          <p className="text-slate-400 mb-8 text-center">Exposure across government-backed startup ecosystem, ISRO (IIRS), and advanced technology programs.</p>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { front: "🛰️ ISRO (IIRS)", back: "Geodata Processing using Python & ML" },
@@ -425,12 +415,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why I Build Section */}
+      <section className="py-20">
+        <div className="container max-w-4xl mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-12">Why I Build</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="bg-slate-700/50 border border-slate-600 rounded-2xl p-6 hover:border-cyan-500/50 transition-colors">
+              <h3 className="font-semibold mb-2">Real-World Problem Focus</h3>
+              <p className="text-sm text-slate-400">I focus on solving tangible real-world trust and marketplace problems.</p>
+            </div>
+            <div className="bg-slate-700/50 border border-slate-600 rounded-2xl p-6 hover:border-cyan-500/50 transition-colors">
+              <h3 className="font-semibold mb-2">Execution Over Ideas</h3>
+              <p className="text-sm text-slate-400">I believe disciplined execution matters more than ideas alone.</p>
+            </div>
+            <div className="bg-slate-700/50 border border-slate-600 rounded-2xl p-6 hover:border-cyan-500/50 transition-colors">
+              <h3 className="font-semibold mb-2">Product + Growth Hybrid Thinking</h3>
+              <p className="text-sm text-slate-400">I combine product architecture with positioning and growth systems.</p>
+            </div>
+            <div className="bg-slate-700/50 border border-slate-600 rounded-2xl p-6 hover:border-cyan-500/50 transition-colors">
+              <h3 className="font-semibold mb-2">Long-Term Impact Vision</h3>
+              <p className="text-sm text-slate-400">I aim to build scalable digital infrastructure that creates systemic impact.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder Statement */}
+      <div className="text-xl md:text-2xl font-semibold text-center text-slate-300 py-16">
+        <p>"I am not just building products. I am building systems that scale trust."</p>
+      </div>
+
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="container max-w-2xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Let's Connect</h2>
           <p className="text-lg text-slate-300 mb-12">
-            Have a project in mind? Let's discuss how we can work together.
+            Open to meaningful startup collaborations, product roles, and ecosystem partnerships.
           </p>
 
           <div className="flex justify-center gap-6 mb-12">
