@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Github, Linkedin, Menu, X, ChevronDown, ExternalLink, MessageCircle } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Github, Linkedin, Menu, X, ChevronDown, ExternalLink, MessageCircle, Moon, Sun } from "lucide-react";
 
 /**
  * Premium Portfolio Homepage - Matching Reference Design
@@ -13,6 +14,7 @@ export default function Home() {
   const [flippedCerts, setFlippedCerts] = useState<number[]>([]);
   const [activeSection, setActiveSection] = useState("home");
   const [showCredentials, setShowCredentials] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const toggleCert = (index: number) => {
     setFlippedCerts(prev =>
@@ -28,26 +30,26 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-100 text-slate-900 transition-colors duration-500 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-white">
       {/* Animated Background */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-blob" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl animate-blob animation-delay-4000" />
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl animate-blob dark:bg-cyan-500/10" />
+        <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-indigo-500/15 blur-3xl animate-blob animation-delay-2000 dark:bg-blue-500/10" />
+        <div className="absolute left-1/2 top-1/2 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl animate-blob animation-delay-4000 dark:bg-purple-500/5" />
       </div>
 
       {/* Navigation */}
-<nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
+<nav className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-md transition-colors dark:border-slate-700/60 dark:bg-slate-900/80">
   <div className="container max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
     
     <button
       onClick={() => scrollToSection("home")}
       className="flex items-center gap-2 group"
     >
-      <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
+      <span className="font-display bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 bg-clip-text text-2xl text-transparent transition-opacity group-hover:opacity-80">
         Devendra
       </span>
-      <span className="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded-full border border-cyan-500/30 hidden sm:inline">
+      <span className="hidden rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2 py-1 text-xs text-cyan-700 sm:inline dark:text-cyan-300">
         Founder
       </span>
     </button>
@@ -60,7 +62,7 @@ export default function Home() {
                 key={item}
                 onClick={() => scrollToSection(item)}
                 className={`text-sm font-medium transition-colors capitalize ${
-                  activeSection === item ? "text-cyan-400" : "text-slate-300 hover:text-cyan-400"
+                  activeSection === item ? "text-cyan-600 dark:text-cyan-300" : "text-slate-700 hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
                 }`}
               >
                 {item}
@@ -68,9 +70,18 @@ export default function Home() {
             ))}
           </div>
 
+          <button
+            onClick={toggleTheme}
+            className="hidden items-center gap-2 rounded-full border border-slate-300 bg-white/70 px-3 py-2 text-xs font-medium text-slate-700 transition-colors hover:border-cyan-500 hover:text-cyan-600 md:inline-flex dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:text-cyan-300"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+            {theme === "dark" ? "Light" : "Dark"}
+          </button>
+
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-slate-300 hover:text-cyan-400 transition-colors"
+            className="md:hidden text-slate-700 transition-colors hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -79,53 +90,60 @@ export default function Home() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-slate-800/95 border-t border-slate-700 py-4 px-4 space-y-3">
+          <div className="space-y-3 border-t border-slate-200 bg-white/95 px-4 py-4 md:hidden dark:border-slate-700 dark:bg-slate-800/95">
             {["home", "about", "journey", "skills", "projects", "contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="block w-full text-left text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors capitalize py-2"
+                className="block w-full py-2 text-left text-sm font-medium capitalize text-slate-700 transition-colors hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
               >
                 {item}
               </button>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="mt-2 inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-3 py-2 text-xs font-medium text-slate-700 transition-colors hover:border-cyan-500 hover:text-cyan-600 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:hover:text-cyan-300"
+            >
+              {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+              Switch to {theme === "dark" ? "light" : "dark"}
+            </button>
           </div>
         )}
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative py-20 md:py-32 overflow-hidden">
+      <section id="home" className="relative overflow-hidden py-20 md:py-28 lg:py-32">
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
             {/* Left Content */}
-            <div className="space-y-6 animate-fade-in">
+            <div className="space-y-8 animate-fade-in-up">
               <div>
-                <p className="text-cyan-400 font-medium mb-2 text-sm">Welcome to my portfolio</p>
-                <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-4">
+                <p className="mb-3 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-300">Welcome to my portfolio</p>
+                <h1 className="font-display mb-5 text-4xl leading-tight sm:text-5xl md:text-6xl">
                   Hi, I'm <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Devendra Gupta</span>
                 </h1>
-                <p className="text-xl text-slate-300 mb-4">
+                <p className="mb-4 max-w-xl text-lg font-medium text-slate-700 dark:text-slate-300">
                   Startup Builder | Founder of TrustMitra | Product & Growth Execution
                 </p>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="max-w-2xl leading-relaxed text-slate-600 dark:text-slate-400">
                   I build and execute tech-driven startup ideas that solve real-world problems.
                 </p>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="max-w-2xl leading-relaxed text-slate-600 dark:text-slate-400">
                   My journey includes building a marketplace MVP (TrustMitra) from concept to execution, gaining invaluable experience within the government-backed startup ecosystem, and focusing on developing robust product systems for scalable execution.
                 </p>
-                <p className="text-slate-400 leading-relaxed font-bold">
+                <p className="max-w-2xl leading-relaxed font-semibold text-slate-800 dark:text-slate-200">
                   Currently building a digital trust layer for India’s gig workforce.
                 </p>
               </div>
 
-              <div className="flex gap-4 pt-4">
+              <div className="flex flex-wrap gap-4 pt-2">
                 <a href="https://github.com/devubro143" target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 gap-2 text-white border-0">
+                  <Button className="gap-2 border-0 bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20 transition-transform hover:-translate-y-0.5 hover:from-cyan-600 hover:to-blue-700">
                     <Github size={18} /> GitHub
                   </Button>
                 </a>
                 <a href="https://www.linkedin.com/in/devendra-gupta-a0967539a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800 gap-2">
+                  <Button variant="outline" className="gap-2 border-slate-300 text-slate-700 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
                     <Linkedin size={18} /> LinkedIn
                   </Button>
                 </a>
@@ -133,13 +151,13 @@ export default function Home() {
             </div>
 
             {/* Right - Profile Image */}
-            <div className="animate-slide-up flex justify-center mt-8 md:mt-0">
+            <div className="mt-8 flex animate-float justify-center md:mt-0">
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-500/60 to-blue-600/50 blur-2xl opacity-40 transition-opacity group-hover:opacity-60" />
                 <img
                   src="https://d2xsxph8kpxj0f.cloudfront.net/310519663240011608/RDtcqQS6nedP3Gdk4KDDnR/myprofessionalimage_29789670.png"
                   alt="Devendra Gupta"
-                  className="relative w-80 h-96 rounded-3xl shadow-2xl object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  className="relative h-96 w-80 rounded-3xl border border-white/20 object-cover shadow-2xl shadow-cyan-900/20 transition-transform duration-500 group-hover:scale-[1.03]"
                 />
               </div>
             </div>
@@ -149,7 +167,7 @@ export default function Home() {
           <div className="flex justify-center mt-16">
             <button
               onClick={() => scrollToSection("about")}
-              className="animate-bounce text-cyan-400 hover:text-cyan-300 transition-colors"
+              className="animate-bounce text-cyan-600 transition-colors hover:text-cyan-500 dark:text-cyan-300"
             >
               <ChevronDown size={32} />
             </button>
