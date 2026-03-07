@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Github, Linkedin, Menu, X, ChevronDown, ExternalLink, MessageCircle, Moon, Sun } from "lucide-react";
+import { Github, Linkedin, Menu, X, ChevronDown, ExternalLink, MessageCircle, Moon, Sun, Play, Sparkles, Rocket, Lightbulb, Code2, Database, Globe, Wrench } from "lucide-react";
 import { Link } from "wouter";
 import { buildLogs } from "@/data/buildLogs";
 
@@ -121,6 +121,10 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="home" className="relative overflow-hidden py-20 md:py-28 lg:py-32">
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-80 dark:opacity-100">
+          <div className="absolute -top-40 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-500/20 via-blue-500/15 to-violet-500/20 blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-1/4 h-52 w-52 rounded-full bg-cyan-500/10 blur-3xl animate-blob" />
+        </div>
         <div className="container max-w-6xl mx-auto px-4">
           <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
             {/* Left Content */}
@@ -266,12 +270,19 @@ export default function Home() {
             <div>
               <h3 className="text-xl font-semibold mb-6">Core Strengths</h3>
               <div className="flex flex-wrap gap-3">
-                {["Startup Execution", "Product Strategy", "Marketplace Model Design", "MVP Development", "Growth Systems Thinking"].map((skill, idx) => (
+                {[
+                  { name: "Startup Execution", icon: Rocket },
+                  { name: "Product Strategy", icon: Lightbulb },
+                  { name: "Marketplace Model Design", icon: Sparkles },
+                  { name: "MVP Development", icon: Code2 },
+                  { name: "Growth Systems Thinking", icon: Wrench }
+                ].map((skill, idx) => (
                   <span
                     key={idx}
-                    className="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 text-cyan-300 font-medium text-sm hover:border-cyan-500 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 text-cyan-300 font-medium text-sm hover:border-cyan-500 transition-colors"
                   >
-                    {skill}
+                    <skill.icon size={14} className="text-cyan-200" />
+                    {skill.name}
                   </span>
                 ))}
               </div>
@@ -291,8 +302,9 @@ export default function Home() {
   ].map((skill, idx) => (
     <span
       key={idx}
-      className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300 font-medium text-sm hover:border-purple-500 transition-colors"
+      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300 font-medium text-sm hover:border-purple-500 transition-colors"
     >
+      {idx < 3 ? <Code2 size={14} className="text-purple-200" /> : idx < 6 ? <Database size={14} className="text-purple-200" /> : <Globe size={14} className="text-purple-200" />}
       {skill}
     </span>
   ))}
@@ -563,38 +575,48 @@ export default function Home() {
             {latestBuildLogs.map((log) => (
               <article
                 key={log.day}
-                className="rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 p-6 shadow-[0_0_0_1px_rgba(56,189,248,0.08)]"
+className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 p-6 shadow-[0_0_0_1px_rgba(56,189,248,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.25),0_18px_40px_-22px_rgba(56,189,248,0.65)]"
               >
                 <p className="text-sm font-semibold text-cyan-300 mb-2">Day {log.day}</p>
                 <h3 className="text-xl font-bold leading-tight mb-2">{log.title}</h3>
                 <p className="text-sm text-slate-400 mb-3">{log.date}</p>
                 <p className="text-slate-300 text-sm leading-relaxed mb-5">{log.summary}</p>
 
-                {getYouTubeThumbnail(log.youtubeVideo) && (
-                  <div className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60 mb-5">
-                    <img
-                      src={getYouTubeThumbnail(log.youtubeVideo)}
-                      alt={`Day ${log.day} vlog thumbnail`}
-                      className="aspect-video w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                )}
+                {getYouTubeThumbnail(log.youtubeVideo) && ({getYouTubeThumbnail(log.youtubeVideo) && (
+  <Link href={`/build#day-${log.day}`}>
+    <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60 mb-5 cursor-pointer transition-all duration-300 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_26px_rgba(34,211,238,0.18)]">
+      <img
+        src={getYouTubeThumbnail(log.youtubeVideo)}
+        alt={`Day ${log.day} vlog thumbnail`}
+        className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-slate-950/35 transition-colors duration-300 group-hover:bg-slate-950/5" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/50 bg-slate-900/75 text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.35)] backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+          <Play size={22} className="ml-0.5" />
+        </span>
+      </div>
+    </div>
+  </Link>
+)}
 
-                <Link href="/build">
-                  <Button variant="outline" className="w-full border-slate-600 text-slate-200 hover:bg-slate-800 hover:text-white">
-                    Read Full Log
-                  </Button>
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+<Link href={`/build#day-${log.day}`}>
+  <Button
+    variant="outline"
+    className="w-full border-slate-600 text-slate-200 transition-colors hover:bg-slate-800 hover:text-white"
+  >
+    Read Full Log
+  </Button>
+</Link>
 
       {/* Founder Statement */}
-      <div className="text-xl md:text-2xl font-semibold text-center text-slate-300 py-16">
-        <p>"I am not just building products. I am building systems that scale trust."</p>
+      <div className="py-16">
+        <div className="mx-auto max-w-4xl rounded-3xl border border-cyan-400/20 bg-slate-900/40 px-6 py-10 text-center shadow-[0_0_40px_rgba(34,211,238,0.08)]">
+          <p className="text-2xl font-semibold leading-snug text-slate-100 md:text-3xl md:leading-tight [text-shadow:0_0_18px_rgba(34,211,238,0.25)]">
+            "I am not just building products. I am building systems that scale trust."
+          </p>
+        </div>
       </div>
 
       {/* Contact Section */}
@@ -645,7 +667,7 @@ export default function Home() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0 gap-2">
+        <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0 gap-2 px-6 py-6 text-base font-semibold shadow-[0_12px_30px_-14px_rgba(34,211,238,0.8)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_34px_-14px_rgba(34,211,238,0.95)]">
           <MessageCircle size={18} /> Chat on WhatsApp
         </Button>
       </a>
@@ -663,13 +685,4 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
 
