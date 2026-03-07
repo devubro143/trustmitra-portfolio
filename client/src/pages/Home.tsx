@@ -553,29 +553,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Currently Building */}
-      <section className="pb-8">
-        <div className="container max-w-6xl mx-auto px-4">
-          <div className="rounded-3xl border border-slate-700/80 bg-slate-900/40 p-6 md:p-7 shadow-[0_0_0_1px_rgba(56,189,248,0.06)]">
-            <h2 className="text-xl md:text-2xl font-semibold mb-4">Currently Building</h2>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {[
-                "TrustMitra MVP",
-                "Worker identity system",
-                "Build in Public documentation"
-              ].map((item) => (
-                <div key={item} className="rounded-2xl border border-slate-700 bg-slate-900/70 px-4 py-3 text-sm text-slate-300 flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Build in Public Section */}
       <section id="build-in-public" className="py-20 border-y border-slate-700/50 bg-slate-900/40">
+
         <div className="container max-w-6xl mx-auto px-4">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-10">
             <div>
@@ -595,42 +575,40 @@ export default function Home() {
             {latestBuildLogs.map((log) => (
               <article
                 key={log.day}
-                className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 p-6 shadow-[0_0_0_1px_rgba(56,189,248,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.25),0_18px_40px_-22px_rgba(56,189,248,0.65)]"
+className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 p-6 shadow-[0_0_0_1px_rgba(56,189,248,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.25),0_18px_40px_-22px_rgba(56,189,248,0.65)]"
               >
                 <p className="text-sm font-semibold text-cyan-300 mb-2">Day {log.day}</p>
                 <h3 className="text-xl font-bold leading-tight mb-2">{log.title}</h3>
                 <p className="text-sm text-slate-400 mb-3">{log.date}</p>
                 <p className="text-slate-300 text-sm leading-relaxed mb-5">{log.summary}</p>
 
-                {getYouTubeThumbnail(log.youtubeVideo) && (
-                  <Link href={`/build#day-${log.day}`}>
-                    <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60 mb-5 cursor-pointer transition-all duration-300 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_26px_rgba(34,211,238,0.18)]">
-                      <img
-                        src={getYouTubeThumbnail(log.youtubeVideo)}
-                        alt={`Day ${log.day} vlog thumbnail`}
-                        className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-slate-950/35 transition-colors duration-300 group-hover:bg-slate-950/5" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/50 bg-slate-900/75 text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.35)] backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
-                          <Play size={22} className="ml-0.5" />
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                )}
+                {getYouTubeThumbnail(log.youtubeVideo) && ({getYouTubeThumbnail(log.youtubeVideo) && (
+  <Link href={`/build#day-${log.day}`}>
+    <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60 mb-5 cursor-pointer transition-all duration-300 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_26px_rgba(34,211,238,0.18)]">
+      <img
+        src={getYouTubeThumbnail(log.youtubeVideo)}
+        alt={`Day ${log.day} vlog thumbnail`}
+        className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-slate-950/35 transition-colors duration-300 group-hover:bg-slate-950/5" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/50 bg-slate-900/75 text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.35)] backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+          <Play size={22} className="ml-0.5" />
+        </span>
+      </div>
+    </div>
+  </Link>
+)}
 
-                <Link href={`/build#day-${log.day}`}>
-                  <Button variant="outline" className="w-full border-slate-600 text-slate-200 transition-colors hover:bg-slate-800 hover:text-white">
-                    Read Full Log
-                  </Button>
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+<Link href={`/build#day-${log.day}`}>
+  <Button
+    variant="outline"
+    className="w-full border-slate-600 text-slate-200 transition-colors hover:bg-slate-800 hover:text-white"
+  >
+    Read Full Log
+  </Button>
+</Link>
 
       {/* Founder Statement */}
       <div className="py-16">
@@ -707,3 +685,4 @@ export default function Home() {
     </div>
   );
 }
+
