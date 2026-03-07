@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Github, Linkedin, Menu, X, ChevronDown, ExternalLink, MessageCircle, Moon, Sun } from "lucide-react";
+import { Link } from "wouter";
+import { buildLogs } from "@/data/buildLogs";
 
 /**
  * Premium Portfolio Homepage - Matching Reference Design
@@ -28,6 +29,13 @@ export default function Home() {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const getYouTubeThumbnail = (url: string) => {
+    const match = url.match(/embed\/([^?&]+)/);
+    return match?.[1] ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : "";
+  };
+
+  const latestBuildLogs = [...buildLogs].sort((a, b) => b.day - a.day).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-100 text-slate-900 transition-colors duration-500 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-white">
@@ -57,12 +65,12 @@ export default function Home() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            {["home", "about", "journey", "skills", "projects", "contact"].map((item) => (
+            {["home", "about", "journey", "skills", "projects", "build in public", "contact"].map((item) => (
               <button
                 key={item}
-                onClick={() => scrollToSection(item)}
+                onClick={() => scrollToSection(item === "build in public" ? "build-in-public" : item)}
                 className={`text-sm font-medium transition-colors capitalize ${
-                  activeSection === item ? "text-cyan-600 dark:text-cyan-300" : "text-slate-700 hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
+                  activeSection === (item === "build in public" ? "build-in-public" : item) ? "text-cyan-600 dark:text-cyan-300" : "text-slate-700 hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
                 }`}
               >
                 {item}
@@ -91,10 +99,10 @@ export default function Home() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="space-y-3 border-t border-slate-200 bg-white/95 px-4 py-4 md:hidden dark:border-slate-700 dark:bg-slate-800/95">
-            {["home", "about", "journey", "skills", "projects", "contact"].map((item) => (
+            {["home", "about", "journey", "skills", "projects", "build in public", "contact"].map((item) => (
               <button
                 key={item}
-                onClick={() => scrollToSection(item)}
+                onClick={() => scrollToSection(item === "build in public" ? "build-in-public" : item)}
                 className="block w-full py-2 text-left text-sm font-medium capitalize text-slate-700 transition-colors hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
               >
                 {item}
@@ -529,6 +537,56 @@ export default function Home() {
               <h3 className="font-semibold mb-2">Long-Term Impact Vision</h3>
               <p className="text-sm text-slate-400">I aim to build scalable digital infrastructure that creates systemic impact.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Build in Public Section */}
+      <section id="build-in-public" className="py-20 border-y border-slate-700/50 bg-slate-900/40">
+        <div className="container max-w-6xl mx-auto px-4">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-10">
+            <div>
+              <h2 className="text-4xl font-bold mb-2">Build in Public</h2>
+              <p className="text-slate-300 max-w-2xl">
+                Daily founder notes from building TrustMitra in public — what I shipped, what I learned, and how the journey evolves.
+              </p>
+            </div>
+            <Link href="/build">
+              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0">
+                View All Logs
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {latestBuildLogs.map((log) => (
+              <article
+                key={log.day}
+                className="rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 p-6 shadow-[0_0_0_1px_rgba(56,189,248,0.08)]"
+              >
+                <p className="text-sm font-semibold text-cyan-300 mb-2">Day {log.day}</p>
+                <h3 className="text-xl font-bold leading-tight mb-2">{log.title}</h3>
+                <p className="text-sm text-slate-400 mb-3">{log.date}</p>
+                <p className="text-slate-300 text-sm leading-relaxed mb-5">{log.summary}</p>
+
+                {getYouTubeThumbnail(log.youtubeVideo) && (
+                  <div className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60 mb-5">
+                    <img
+                      src={getYouTubeThumbnail(log.youtubeVideo)}
+                      alt={`Day ${log.day} vlog thumbnail`}
+                      className="aspect-video w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+
+                <Link href="/build">
+                  <Button variant="outline" className="w-full border-slate-600 text-slate-200 hover:bg-slate-800 hover:text-white">
+                    Read Full Log
+                  </Button>
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>
