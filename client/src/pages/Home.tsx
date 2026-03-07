@@ -609,6 +609,8 @@ className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-s
     Read Full Log
   </Button>
 </Link>
+</article>
+))}
 
       {/* Founder Statement */}
       <div className="py-16">
