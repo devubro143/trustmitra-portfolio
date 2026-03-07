@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Github, Linkedin, Menu, X, ChevronDown, ExternalLink, MessageCircle, Moon, Sun } from "lucide-react";
+import { Link } from "wouter";
+import { buildLogs } from "@/data/buildLogs";
 
 /**
  * Premium Portfolio Homepage - Matching Reference Design
@@ -27,6 +29,13 @@ export default function Home() {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const getYouTubeThumbnail = (url: string) => {
+    const match = url.match(/embed\/([^?&]+)/);
+    return match?.[1] ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : "";
+  };
+
+  const latestBuildLogs = [...buildLogs].sort((a, b) => b.day - a.day).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-100 text-slate-900 transition-colors duration-500 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-white">
@@ -534,66 +543,52 @@ export default function Home() {
 
       {/* Build in Public Section */}
       <section id="build-in-public" className="py-20 border-y border-slate-700/50 bg-slate-900/40">
-        <div className="container max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Build in Public</h2>
 
-          <article className="rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 p-6 md:p-8 shadow-[0_0_0_1px_rgba(56,189,248,0.08)]">
-            <p className="text-sm font-medium text-cyan-300 mb-3">7 March 2026</p>
-            <h3 className="text-3xl font-bold leading-tight mb-4">Day 1 – Starting My Build in Public Journey</h3>
-            <p className="text-slate-300 leading-relaxed mb-8">
-              Today I started documenting my journey publicly while building TrustMitra. I improved my portfolio UI,
-              worked with GitHub sync, and recorded my first daily vlog.
-            </p>
-
-            <div className="space-y-8">
-              <div>
-                <h4 className="text-xl font-semibold mb-4">What I Did Today</h4>
-                <ul className="space-y-2 text-slate-300">
-                  {[
-                    "Improved portfolio UI",
-                    "Synced GitHub with local project",
-                    "Recorded daily vlog"
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-xl font-semibold mb-4">Key Learnings</h4>
-                <ul className="space-y-2 text-slate-300">
-                  {[
-                    "Version control saves broken code",
-                    "Consistency compounds",
-                    "Documenting the journey builds credibility"
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-xl font-semibold mb-4">Day 1 Vlog</h4>
-                <div className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60">
-                  <iframe
-                    className="aspect-video w-full"
-                    src="https://www.youtube.com/embed/5qap5aO4i9A"
-                    title="Day 1 Build in Public Vlog"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
+        <div className="container max-w-6xl mx-auto px-4">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-10">
+            <div>
+              <h2 className="text-4xl font-bold mb-2">Build in Public</h2>
+              <p className="text-slate-300 max-w-2xl">
+                Daily founder notes from building TrustMitra in public — what I shipped, what I learned, and how the journey evolves.
+              </p>
             </div>
-          </article>
+            <Link href="/build">
+              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0">
+                View All Logs
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {latestBuildLogs.map((log) => (
+              <article
+                key={log.day}
+                className="rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 p-6 shadow-[0_0_0_1px_rgba(56,189,248,0.08)]"
+              >
+                <p className="text-sm font-semibold text-cyan-300 mb-2">Day {log.day}</p>
+                <h3 className="text-xl font-bold leading-tight mb-2">{log.title}</h3>
+                <p className="text-sm text-slate-400 mb-3">{log.date}</p>
+                <p className="text-slate-300 text-sm leading-relaxed mb-5">{log.summary}</p>
+
+                {getYouTubeThumbnail(log.youtubeVideo) && (
+                  <div className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60 mb-5">
+                    <img
+                      src={getYouTubeThumbnail(log.youtubeVideo)}
+                      alt={`Day ${log.day} vlog thumbnail`}
+                      className="aspect-video w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+
+                <Link href="/build">
+                  <Button variant="outline" className="w-full border-slate-600 text-slate-200 hover:bg-slate-800 hover:text-white">
+                    Read Full Log
+                  </Button>
+                </Link>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -668,3 +663,13 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
