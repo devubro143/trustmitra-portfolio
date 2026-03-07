@@ -611,6 +611,9 @@ className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-s
 </Link>
 </article>
 ))}
+</div>
+</div>
+</section>
 
       {/* Founder Statement */}
       <div className="py-16">
