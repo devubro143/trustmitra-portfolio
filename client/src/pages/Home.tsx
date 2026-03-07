@@ -582,7 +582,7 @@ className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-s
                 <p className="text-sm text-slate-400 mb-3">{log.date}</p>
                 <p className="text-slate-300 text-sm leading-relaxed mb-5">{log.summary}</p>
 
-                {getYouTubeThumbnail(log.youtubeVideo) && ({getYouTubeThumbnail(log.youtubeVideo) && (
+               {getYouTubeThumbnail(log.youtubeVideo) && (
   <Link href={`/build#day-${log.day}`}>
     <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60 mb-5 cursor-pointer transition-all duration-300 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_26px_rgba(34,211,238,0.18)]">
       <img
