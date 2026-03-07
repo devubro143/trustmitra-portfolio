@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Github, Linkedin, Menu, X, ChevronDown, ExternalLink, MessageCircle, Moon, Sun } from "lucide-react";
 
@@ -57,12 +56,12 @@ export default function Home() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            {["home", "about", "journey", "skills", "projects", "contact"].map((item) => (
+            {["home", "about", "journey", "skills", "projects", "build in public", "contact"].map((item) => (
               <button
                 key={item}
-                onClick={() => scrollToSection(item)}
+                onClick={() => scrollToSection(item === "build in public" ? "build-in-public" : item)}
                 className={`text-sm font-medium transition-colors capitalize ${
-                  activeSection === item ? "text-cyan-600 dark:text-cyan-300" : "text-slate-700 hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
+                  activeSection === (item === "build in public" ? "build-in-public" : item) ? "text-cyan-600 dark:text-cyan-300" : "text-slate-700 hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
                 }`}
               >
                 {item}
@@ -91,10 +90,10 @@ export default function Home() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="space-y-3 border-t border-slate-200 bg-white/95 px-4 py-4 md:hidden dark:border-slate-700 dark:bg-slate-800/95">
-            {["home", "about", "journey", "skills", "projects", "contact"].map((item) => (
+            {["home", "about", "journey", "skills", "projects", "build in public", "contact"].map((item) => (
               <button
                 key={item}
-                onClick={() => scrollToSection(item)}
+                onClick={() => scrollToSection(item === "build in public" ? "build-in-public" : item)}
                 className="block w-full py-2 text-left text-sm font-medium capitalize text-slate-700 transition-colors hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
               >
                 {item}
@@ -530,6 +529,71 @@ export default function Home() {
               <p className="text-sm text-slate-400">I aim to build scalable digital infrastructure that creates systemic impact.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Build in Public Section */}
+      <section id="build-in-public" className="py-20 border-y border-slate-700/50 bg-slate-900/40">
+        <div className="container max-w-5xl mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-8">Build in Public</h2>
+
+          <article className="rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 p-6 md:p-8 shadow-[0_0_0_1px_rgba(56,189,248,0.08)]">
+            <p className="text-sm font-medium text-cyan-300 mb-3">7 March 2026</p>
+            <h3 className="text-3xl font-bold leading-tight mb-4">Day 1 – Starting My Build in Public Journey</h3>
+            <p className="text-slate-300 leading-relaxed mb-8">
+              Today I started documenting my journey publicly while building TrustMitra. I improved my portfolio UI,
+              worked with GitHub sync, and recorded my first daily vlog.
+            </p>
+
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-xl font-semibold mb-4">What I Did Today</h4>
+                <ul className="space-y-2 text-slate-300">
+                  {[
+                    "Improved portfolio UI",
+                    "Synced GitHub with local project",
+                    "Recorded daily vlog"
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-semibold mb-4">Key Learnings</h4>
+                <ul className="space-y-2 text-slate-300">
+                  {[
+                    "Version control saves broken code",
+                    "Consistency compounds",
+                    "Documenting the journey builds credibility"
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-semibold mb-4">Day 1 Vlog</h4>
+                <div className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60">
+                  <iframe
+                    className="aspect-video w-full"
+                    src="https://www.youtube.com/embed/5qap5aO4i9A"
+                    title="Day 1 Build in Public Vlog"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
