@@ -1,84 +1,136 @@
 export type BuildLog = {
-  day: number;
-  title: string;
-  date: string;
-  summary: string;
-  actions: string[];
-  learnings: string[];
-  youtubeVideo: string;
-};
+  id: number
+  day: number
+  title: string
+  date: string
+  summary: string
+  actions: string[]
+  learnings: string[]
+  tags?: string[]
+  mood?: string
+  youtubeVideo?: string
+}
 
 export const buildLogs: BuildLog[] = [
   {
+    id: 1,
     day: 1,
-    title: "Starting My Build in Public Journey",
-    date: "7 March 2026",
-    summary:
-      "Today I started documenting my journey publicly while building TrustMitra. I improved my portfolio UI, worked with GitHub sync, and recorded my first daily vlog.",
-    actions: [
-      "Improved portfolio UI",
-      "Synced GitHub with local project",
-      "Recorded daily vlog"
-    ],
-    learnings: [
-      "Version control saves broken code",
-      "Consistency compounds",
-      "Documenting the journey builds credibility"
-    ],
-    youtubeVideo: "https://www.youtube.com/embed/5qap5aO4i9A"
-  },
-  {
-    day: 2,
-    title: "Refining the Founder Story and Product Positioning",
+    title: "Starting Build in Public",
     date: "8 March 2026",
-    summary:
-      "I sharpened TrustMitra's messaging, improved content hierarchy in my portfolio, and shared progress publicly to keep momentum visible.",
+    summary: "Started documenting my founder journey publicly.",
+
     actions: [
-      "Refined TrustMitra positioning copy",
-      "Improved section hierarchy for better readability",
-      "Published build updates on social channels"
+      "Created build logs system",
+      "Improved portfolio UI",
+      "Started founder vlog"
     ],
+
     learnings: [
-      "Clear messaging makes products easier to trust",
-      "Small daily UX fixes improve overall perception",
-      "Public accountability helps maintain momentum"
+      "Building in public increases accountability",
+      "Consistency matters more than perfection"
     ],
-    youtubeVideo: "https://www.youtube.com/embed/jfKfPfyJRdk"
+
+    tags: ["buildinpublic", "founder"],
+    mood: "🚀 Starting Energy",
+
+    youtubeVideo: "https://www.youtube.com/watch?v=1gDxxZDS9QQ"
   },
+
   {
-    day: 3,
-    title: "Improving Workflow and Daily Shipping Discipline",
-    date: "9 March 2026",
-    summary:
-      "I improved my build workflow, reduced context switching, and focused on shipping one meaningful update while recording and sharing the day.",
-    actions: [
-      "Planned a clearer daily build checklist",
-      "Reduced context-switching during coding sessions",
-      "Recorded and published a focused daily vlog"
-    ],
-    learnings: [
-      "Systems beat motivation for long-term consistency",
-      "Focused execution creates better output than multitasking",
-      "Sharing progress attracts valuable feedback loops"
-    ],
-    youtubeVideo: "https://www.youtube.com/embed/4xDzrJKXOOY"
-  },
+  id: 2,
+  day: 2,
+  title: "Improving Portfolio UI",
+  date: "9 March 2026",
+  summary: "Improved portfolio layout and added animations.",
+
+  actions: [
+    "Improved card spacing",
+    "Added hover animations",
+    "Refined color palette"
+  ],
+
+  learnings: [
+    "Small UI details improve perception",
+    "Consistency is key"
+  ],
+
+  tags: ["ui","portfolio"],
+  mood: "🎨 Design Mode",
+
+  youtubeVideo: "https://www.youtube.com/watch?v=WHqbqzqeskw&list=RDWHqbqzqeskw&start_radio=1&pp=oAcB"
+}
+,
+
   {
-    day: 4,
-    title: "Strengthening Product UI and Documentation Habits",
-    date: "10 March 2026",
-    summary:
-      "I polished UI details, documented implementation decisions, and continued the build-in-public streak to build trust through transparency.",
-    actions: [
-      "Improved card spacing and visual consistency",
-      "Documented implementation decisions for future iterations",
-      "Recorded and shared progress with the community"
-    ],
-    learnings: [
-      "Good documentation reduces future rework",
-      "UI polish improves first impression dramatically",
-      "Consistency in public updates builds long-term credibility"
-    ],
-    youtubeVideo: "https://www.youtube.com/embed/LXb3EKWsInQ"
-  }
-];
+  id: 3,
+  day: 3,
+  title: "Improving Portfolio UI",
+  date: "10 March 2026",
+  summary: "Improved portfolio layout and added animations.",
+
+  actions: [
+    "Improved card spacing",
+    "Added hover animations",
+    "Refined color palette"
+  ],
+
+  learnings: [
+    "Small UI details improve perception",
+    "Consistency is key"
+  ],
+
+  tags: ["ui","portfolio"],
+  mood: "🎨 Design Mode",
+
+  youtubeVideo: "https://www.youtube.com/watch?v=3suSHefjRt0&t=217s"
+},
+
+  {
+  id: 4,
+  day: 4,
+  title: "Improving Portfolio UI",
+  date: "11 March 2026",
+  summary: "Improved portfolio layout and added animations.",
+
+  actions: [
+    "Improved card spacing",
+    "Added hover animations",
+    "Refined color palette"
+  ],
+
+  learnings: [
+    "Small UI details improve perception",
+    "Consistency is key"
+  ],
+
+  tags: ["ui","portfolio"],
+  mood: "🎨 Design Mode",
+
+  youtubeVideo: "https://www.youtube.com/watch?v=TsPecr7jd2Y&list=RDTsPecr7jd2Y&start_radio=1&pp=oAcB"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
+

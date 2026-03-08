@@ -1,8 +1,24 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { buildLogs } from "@/data/buildLogs";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+
+function getYoutubeEmbed(url: string) {
+  if (!url) return "";
+
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/);
+
+  if (!match) return "";
+
+  return `https://www.youtube.com/embed/${match[1]}`;
+}
+
+
 
 export default function BuildLogs() {
+  
   const logs = [...buildLogs].sort((a, b) => b.day - a.day);
 
   return (
@@ -68,7 +84,6 @@ export default function BuildLogs() {
                   <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-2">
                     {log.title}
                   </h2>
-
                   <p className="text-sm text-slate-400 mb-4">
                     {log.date}
                   </p>
@@ -112,22 +127,18 @@ export default function BuildLogs() {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">
-                      Day {log.day} Vlog
-                    </h3>
+  <h3 className="text-lg font-semibold mb-3">
+    Day {log.day} Vlog
+  </h3>
 
-                    <div className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60">
-                      <iframe
-                        className="aspect-video w-full"
-                        src={log.youtubeVideo}
-                        title={`Day ${log.day} Build in Public Vlog`}
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen
-                      />
-                    </div>
-                  </div>
+  <div className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60">
+    <iframe
+      src={getYoutubeEmbed(log.youtubeVideo)}
+      className="w-full h-[420px] rounded-xl"
+      allowFullScreen
+    />
+  </div>
+</div>
 
                 </article>
               ))}

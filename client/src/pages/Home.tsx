@@ -600,8 +600,8 @@ className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-s
     </div>
   </Link>
 )}
-
-<Link href={`/build#day-${log.day}`}>
+Read Full Log
+<Link to={`/build#day-${log.day}`}>
   <Button
     variant="outline"
     className="w-full border-slate-600 text-slate-200 transition-colors hover:bg-slate-800 hover:text-white"
