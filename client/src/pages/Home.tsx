@@ -584,7 +584,7 @@ className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-s
 
                 {log.tags && (
                   <div className="flex flex-wrap gap-2 mt-3">
-                    {log.tags.map((tag, i) => (
+                    {log.tags?.map((tag, i) => (
                       <span
                         key={i}
                         className="text-xs px-2 py-1 rounded-md bg-cyan-900/40 text-cyan-300 border border-cyan-500/20"
@@ -609,7 +609,7 @@ className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-s
                     <p className="text-xs text-cyan-400 font-semibold mb-1">Key Learnings</p>
 
                     <ul className="text-xs text-gray-300 list-disc list-inside space-y-1">
-                      {log.learnings.map((item, i) => (
+                      {log.learnings?.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
                     </ul>
