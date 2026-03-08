@@ -1,25 +1,46 @@
-export type BuildLog = {
+export interface BuildLog {
   day: number;
   title: string;
   date: string;
   summary: string;
-  actions: string[];
-  learnings: string[];
-  youtubeVideo: string;
-};
+  youtubeVideo?: string;
+  tags?: string[];
+  metrics?: {
+    commits?: number;
+    features?: number;
+    bugs?: number;
+    docs?: number;
+  };
+  learnings?: string[];
+  mood?: string;
+}
 
 export const buildLogs: BuildLog[] = [
+  {
+    day: 45,
+    title: "TrustMitra OTP Job Start System",
+    date: "2026-03-01",
+    summary:
+      "Built the OTP verification system that confirms worker presence before starting a job.",
+    tags: ["Product", "Engineering"],
+    metrics: {
+      commits: 7,
+      features: 2,
+      bugs: 3
+    },
+    learnings: [
+      "Trust systems must be visible to users",
+      "Verification must be instant",
+      "Workers prefer minimal onboarding steps"
+    ],
+    mood: "🔥 Deep Build Mode"
+  },
   {
     day: 1,
     title: "Starting My Build in Public Journey",
     date: "7 March 2026",
     summary:
       "Today I started documenting my journey publicly while building TrustMitra. I improved my portfolio UI, worked with GitHub sync, and recorded my first daily vlog.",
-    actions: [
-      "Improved portfolio UI",
-      "Synced GitHub with local project",
-      "Recorded daily vlog"
-    ],
     learnings: [
       "Version control saves broken code",
       "Consistency compounds",
@@ -33,11 +54,6 @@ export const buildLogs: BuildLog[] = [
     date: "8 March 2026",
     summary:
       "I sharpened TrustMitra's messaging, improved content hierarchy in my portfolio, and shared progress publicly to keep momentum visible.",
-    actions: [
-      "Refined TrustMitra positioning copy",
-      "Improved section hierarchy for better readability",
-      "Published build updates on social channels"
-    ],
     learnings: [
       "Clear messaging makes products easier to trust",
       "Small daily UX fixes improve overall perception",
@@ -51,11 +67,6 @@ export const buildLogs: BuildLog[] = [
     date: "9 March 2026",
     summary:
       "I improved my build workflow, reduced context switching, and focused on shipping one meaningful update while recording and sharing the day.",
-    actions: [
-      "Planned a clearer daily build checklist",
-      "Reduced context-switching during coding sessions",
-      "Recorded and published a focused daily vlog"
-    ],
     learnings: [
       "Systems beat motivation for long-term consistency",
       "Focused execution creates better output than multitasking",
@@ -69,11 +80,6 @@ export const buildLogs: BuildLog[] = [
     date: "10 March 2026",
     summary:
       "I polished UI details, documented implementation decisions, and continued the build-in-public streak to build trust through transparency.",
-    actions: [
-      "Improved card spacing and visual consistency",
-      "Documented implementation decisions for future iterations",
-      "Recorded and shared progress with the community"
-    ],
     learnings: [
       "Good documentation reduces future rework",
       "UI polish improves first impression dramatically",

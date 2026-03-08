@@ -582,24 +582,60 @@ className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-s
                 <p className="text-sm text-slate-400 mb-3">{log.date}</p>
                 <p className="text-slate-300 text-sm leading-relaxed mb-5">{log.summary}</p>
 
-               {getYouTubeThumbnail(log.youtubeVideo) && (
-  <Link href={`/build#day-${log.day}`}>
-    <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60 mb-5 cursor-pointer transition-all duration-300 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_26px_rgba(34,211,238,0.18)]">
-      <img
-        src={getYouTubeThumbnail(log.youtubeVideo)}
-        alt={`Day ${log.day} vlog thumbnail`}
-        className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        loading="lazy"
-      />
-      <div className="absolute inset-0 bg-slate-950/35 transition-colors duration-300 group-hover:bg-slate-950/5" />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/50 bg-slate-900/75 text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.35)] backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
-          <Play size={22} className="ml-0.5" />
-        </span>
-      </div>
-    </div>
-  </Link>
-)}
+                {log.tags && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {log.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="text-xs px-2 py-1 rounded-md bg-cyan-900/40 text-cyan-300 border border-cyan-500/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {log.metrics && (
+                  <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-gray-300">
+                    {log.metrics.commits && <div>💻 {log.metrics.commits} commits</div>}
+                    {log.metrics.features && <div>⚙️ {log.metrics.features} features</div>}
+                    {log.metrics.bugs && <div>🐛 {log.metrics.bugs} bugs fixed</div>}
+                    {log.metrics.docs && <div>📝 {log.metrics.docs} docs</div>}
+                  </div>
+                )}
+
+                {log.learnings && (
+                  <div className="mt-4">
+                    <p className="text-xs text-cyan-400 font-semibold mb-1">Key Learnings</p>
+
+                    <ul className="text-xs text-gray-300 list-disc list-inside space-y-1">
+                      {log.learnings.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {log.mood && <div className="mt-4 text-xs text-yellow-400">Founder Mode: {log.mood}</div>}
+
+                {log.youtubeVideo && getYouTubeThumbnail(log.youtubeVideo) && (
+                  <Link href={`/build#day-${log.day}`}>
+                    <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/60 mb-5 cursor-pointer transition-all duration-300 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_26px_rgba(34,211,238,0.18)]">
+                      <img
+                        src={getYouTubeThumbnail(log.youtubeVideo)}
+                        alt={`Day ${log.day} vlog thumbnail`}
+                        className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-slate-950/35 transition-colors duration-300 group-hover:bg-slate-950/5" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/50 bg-slate-900/75 text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.35)] backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+                          <Play size={22} className="ml-0.5" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                )}
 
 <Link href={`/build#day-${log.day}`}>
   <Button
