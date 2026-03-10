@@ -7,6 +7,7 @@ import {
   Menu,
   X,
   ChevronDown,
+  ArrowRight,
   ExternalLink,
   MessageCircle,
   Moon,
@@ -28,6 +29,7 @@ import FadeInSection from "@/components/motion/FadeInSection";
 import HoverCard from "@/components/motion/HoverCard";
 import MotionButton from "@/components/motion/MotionButton";
 import TypewriterSubtitle from "@/components/motion/TypewriterSubtitle";
+import HeroParticles from "@/components/HeroParticles";
 
 const navItems = [
   "home",
@@ -290,6 +292,7 @@ export default function Home() {
         id="home"
         className="relative overflow-hidden py-20 md:py-28 lg:py-32"
       >
+        <HeroParticles className="absolute inset-0 -z-10" />
         <div className="hero-ambient-gradient pointer-events-none absolute inset-0 -z-20" />
         <div className="pointer-events-none absolute inset-0 -z-10 opacity-80 dark:opacity-100">
           <div className="absolute -top-40 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-500/20 via-blue-500/15 to-violet-500/20 blur-3xl animate-pulse" />
@@ -697,6 +700,7 @@ export default function Home() {
             <HoverCard
               hoverScale={1.03}
               hoverY={-10}
+              tiltEnabled
               className="group rounded-3xl border border-slate-700/70 p-4 md:p-6"
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -761,14 +765,30 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="flex gap-3 pt-4">
-                    <MotionButton
-                      asChild
-                      className="gap-2 border-0 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:from-cyan-600 hover:to-blue-700 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
+                    <motion.div
+                      whileHover={{ y: -3, scale: 1.03 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 320,
+                        damping: 22,
+                        mass: 0.45,
+                      }}
+                      className="md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
                     >
-                      <a href="#">
-                        <ExternalLink size={16} /> View Project
-                      </a>
-                    </MotionButton>
+                      <MotionButton
+                        asChild
+                        className="group/cta gap-2 border-0 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:from-cyan-600 hover:to-blue-700 hover:shadow-[0_0_22px_rgba(34,211,238,0.32)]"
+                      >
+                        <a href="#" className="inline-flex items-center gap-2">
+                          <ExternalLink size={16} />
+                          <span>View Project</span>
+                          <ArrowRight
+                            size={15}
+                            className="transition-transform duration-300 group-hover/cta:translate-x-1"
+                          />
+                        </a>
+                      </MotionButton>
+                    </motion.div>
                   </div>
                 </div>
               </div>
@@ -778,6 +798,7 @@ export default function Home() {
             <HoverCard
               hoverScale={1.03}
               hoverY={-10}
+              tiltEnabled
               className="group rounded-3xl border border-slate-700/70 p-4 md:p-6"
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -822,14 +843,30 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="flex gap-3 pt-4">
-                    <MotionButton
-                      asChild
-                      className="gap-2 border-0 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:from-cyan-600 hover:to-blue-700 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
+                    <motion.div
+                      whileHover={{ y: -3, scale: 1.03 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 320,
+                        damping: 22,
+                        mass: 0.45,
+                      }}
+                      className="md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
                     >
-                      <a href="#">
-                        <ExternalLink size={16} /> View Project
-                      </a>
-                    </MotionButton>
+                      <MotionButton
+                        asChild
+                        className="group/cta gap-2 border-0 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:from-cyan-600 hover:to-blue-700 hover:shadow-[0_0_22px_rgba(34,211,238,0.32)]"
+                      >
+                        <a href="#" className="inline-flex items-center gap-2">
+                          <ExternalLink size={16} />
+                          <span>View Project</span>
+                          <ArrowRight
+                            size={15}
+                            className="transition-transform duration-300 group-hover/cta:translate-x-1"
+                          />
+                        </a>
+                      </MotionButton>
+                    </motion.div>
                   </div>
                 </div>
               </div>
@@ -839,6 +876,7 @@ export default function Home() {
             <HoverCard
               hoverScale={1.03}
               hoverY={-10}
+              tiltEnabled
               className="group rounded-3xl border border-slate-700/70 p-4 md:p-6"
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -883,18 +921,35 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="flex gap-3 pt-4">
-                    <MotionButton
-                      asChild
-                      className="gap-2 border-0 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:from-cyan-600 hover:to-blue-700 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
+                    <motion.div
+                      whileHover={{ y: -3, scale: 1.03 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 320,
+                        damping: 22,
+                        mass: 0.45,
+                      }}
+                      className="md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
                     >
-                      <a
-                        href="https://github.com/devubro143"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <MotionButton
+                        asChild
+                        className="group/cta gap-2 border-0 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:from-cyan-600 hover:to-blue-700 hover:shadow-[0_0_22px_rgba(34,211,238,0.32)]"
                       >
-                        <ExternalLink size={16} /> View on GitHub
-                      </a>
-                    </MotionButton>
+                        <a
+                          href="https://github.com/devubro143"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2"
+                        >
+                          <ExternalLink size={16} />
+                          <span>View on GitHub</span>
+                          <ArrowRight
+                            size={15}
+                            className="transition-transform duration-300 group-hover/cta:translate-x-1"
+                          />
+                        </a>
+                      </MotionButton>
+                    </motion.div>
                   </div>
                 </div>
               </div>
@@ -1027,6 +1082,7 @@ export default function Home() {
                 key={log.day}
                 hoverScale={1.02}
                 hoverY={-8}
+                tiltEnabled
                 className="group rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 p-6 shadow-[0_0_0_1px_rgba(56,189,248,0.08)]"
               >
                 <p className="text-sm font-semibold text-cyan-300 mb-2">
@@ -1058,13 +1114,32 @@ export default function Home() {
                     </div>
                   </Link>
                 )}
-                <MotionButton
-                  asChild
-                  variant="outline"
-                  className="w-full border-slate-600 text-slate-200 transition-colors hover:bg-slate-800 hover:text-white"
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.03 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 320,
+                    damping: 22,
+                    mass: 0.45,
+                  }}
                 >
-                  <Link href={`/build#day-${log.day}`}>Read Full Log</Link>
-                </MotionButton>
+                  <MotionButton
+                    asChild
+                    variant="outline"
+                    className="group/cta w-full border-slate-600 text-slate-200 transition-colors hover:bg-slate-800 hover:text-white hover:shadow-[0_0_22px_rgba(34,211,238,0.18)]"
+                  >
+                    <Link
+                      href={`/build#day-${log.day}`}
+                      className="inline-flex items-center justify-center gap-2"
+                    >
+                      <span>Read Full Log</span>
+                      <ArrowRight
+                        size={15}
+                        className="transition-transform duration-300 group-hover/cta:translate-x-1"
+                      />
+                    </Link>
+                  </MotionButton>
+                </motion.div>
               </HoverCard>
             ))}
           </div>

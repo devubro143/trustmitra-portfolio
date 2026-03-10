@@ -2,8 +2,8 @@ import HoverCard from "@/components/motion/HoverCard";
 import MotionButton from "@/components/motion/MotionButton";
 import { buildLogs } from "@/data/buildLogs";
 import { cn } from "@/lib/utils";
-import { motion, type Variants } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, type Variants, useScroll, useSpring } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 
 function getYoutubeEmbed(url?: string) {
@@ -44,6 +44,18 @@ const timelineCard = {
 export default function BuildLogs() {
   const logs = [...buildLogs].sort((a, b) => b.day - a.day);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDay, setActiveDay] = useState<number | null>(null);
+  const timelineRef = useRef<HTMLDivElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start end", "end start"],
+  });
+  const lineProgress = useSpring(scrollYProgress, {
+    stiffness: 180,
+    damping: 30,
+    mass: 0.4,
+  });
 
   useEffect(() => {
     const onScroll = () => {
@@ -56,6 +68,52 @@ export default function BuildLogs() {
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const timelineNode = timelineRef.current;
+    if (!timelineNode) {
+      return;
+    }
+
+    const dayNodes =
+      timelineNode.querySelectorAll<HTMLElement>("[data-log-day]");
+    if (dayNodes.length === 0) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visible.length === 0) {
+          return;
+        }
+
+        const nextDay = Number(
+          (visible[0].target as HTMLElement).dataset.logDay ?? NaN
+        );
+        if (Number.isFinite(nextDay)) {
+          setActiveDay(current => (current === nextDay ? current : nextDay));
+        }
+      },
+      {
+        threshold: [0.3, 0.55, 0.8],
+        rootMargin: "-25% 0px -30% 0px",
+      }
+    );
+
+    dayNodes.forEach(node => observer.observe(node));
+    const initialDay = Number(dayNodes[0]?.dataset.logDay ?? NaN);
+    if (Number.isFinite(initialDay)) {
+      setActiveDay(initialDay);
+    }
+
+    return () => {
+      observer.disconnect();
     };
   }, []);
 
@@ -101,8 +159,13 @@ export default function BuildLogs() {
             </p>
           </div>
 
-          <div className="relative pl-0 md:pl-8">
-            <div className="hidden md:block absolute left-3 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/40 via-cyan-400/20 to-transparent" />
+          <div ref={timelineRef} className="relative pl-0 md:pl-8">
+            <div className="hidden md:block absolute left-3 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/20 via-cyan-400/10 to-transparent" />
+            <motion.div
+              aria-hidden
+              className="hidden md:block absolute left-3 top-0 bottom-0 w-px origin-top bg-gradient-to-b from-cyan-300 via-cyan-400/80 to-cyan-400/20"
+              style={{ scaleY: lineProgress }}
+            />
 
             <motion.div
               variants={timelineContainer}
@@ -116,17 +179,40 @@ export default function BuildLogs() {
                   key={log.day}
                   hoverScale={1.015}
                   hoverY={-6}
+                  tiltEnabled
                   className="rounded-3xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950/80 shadow-[0_0_0_1px_rgba(56,189,248,0.08)]"
                 >
                   <motion.article
                     id={`day-${log.day}`}
+                    data-log-day={log.day}
                     custom={index % 2 === 0 ? -1 : 1}
                     variants={timelineCard}
                     className="relative scroll-mt-24 p-6 md:p-8"
                   >
-                    <span className="hidden md:flex absolute -left-10 top-8 h-6 w-6 items-center justify-center rounded-full border border-cyan-400/50 bg-slate-900 text-xs font-semibold text-cyan-300">
+                    <motion.span
+                      animate={
+                        activeDay === log.day
+                          ? {
+                              scale: 1.1,
+                              borderColor: "rgba(34,211,238,0.85)",
+                              boxShadow: "0 0 18px rgba(34,211,238,0.45)",
+                            }
+                          : {
+                              scale: 1,
+                              borderColor: "rgba(34,211,238,0.5)",
+                              boxShadow: "0 0 0 rgba(34,211,238,0)",
+                            }
+                      }
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20,
+                        mass: 0.5,
+                      }}
+                      className="hidden md:flex absolute -left-10 top-8 h-6 w-6 items-center justify-center rounded-full border bg-slate-900 text-xs font-semibold text-cyan-300"
+                    >
                       {log.day}
-                    </span>
+                    </motion.span>
 
                     <p className="text-sm font-medium text-cyan-300 mb-2">
                       Day {log.day}
